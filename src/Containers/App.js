@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import createStore from './../Redux';
-
-
+import Counter from './../Components/Counter';
 
 const store = createStore();
 

@@ -3,7 +3,7 @@ import configureStore from './CreateStore';
 
 export default () => {
   const rootReducer =  combineReducers({
-    //REDUCERS WILL BE HERE
+    hello: require('./HelloRedux').reducer
   });
 
   return configureStore(rootReducer);
