@@ -1,4 +1,5 @@
 import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
 
 //actions
 const { Types, Creators } = createActions({
@@ -10,13 +11,13 @@ export const HelloTypes = Types;
 export default Creators;
 
 //reducers
-export const INITIAL_STATE = {
+export const INITIAL_STATE = Immutable({
   str: null
-}
+});
 
 export const sayHello = ( state ) => {
-  //return state.merge({str: 'Hello ReduxSauce'});
-  return {...state, str: 'Hello ReduxSauce'};
+  return state.merge({str: 'Hello ReduxSauce from Immutable Seamless'});
+  //return {...state, str: 'Hello ReduxSauce'};
 }
 
 export const reducer = createReducer(INITIAL_STATE, {

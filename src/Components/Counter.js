@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HelloAction from '../Redux/HelloRedux';
+import PropTypes from 'prop-types';
 
 class Counter extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func,
+    str: PropTypes.string.isRequired
+  }
+
   constructor(props){
     super(props);
   }
