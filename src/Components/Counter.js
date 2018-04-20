@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HelloAction from '../Redux/HelloRedux';
+import CounterAction from '../Redux/CounterRedux';
 import PropTypes from 'prop-types';
 
 class Counter extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func,
-    str: PropTypes.string.isRequired
+    value: PropTypes.number.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired
   }
 
   constructor(props){
     super(props);
   }
   render() {
-    const { handlePressHello, str } = this.props;
+    const { value, increment, decrement } = this.props;
     return (
       <div>
-        <button onClick={ handlePressHello }> Press to Hello</button>
-        <p>{ str }</p>
+        <button onClick ={ decrement }> Decrement </button>
+        <button onClick={ increment }> Increment </button>
+        <p> { value } </p>
       </div>
     );
   }
@@ -27,7 +30,7 @@ class Counter extends Component {
 const mapStateToProps = (state) => {
   
   return {
-    str: state.hello.str
+    value: state.counter.value
   }
 
 }
@@ -35,7 +38,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 
   return{
-    handlePressHello: () => dispatch(HelloAction.handlePressHello())
+    increment: () => dispatch(CounterAction.increment()),
+    decrement: () => dispatch(CounterAction.decrement())
   }
 }
 
